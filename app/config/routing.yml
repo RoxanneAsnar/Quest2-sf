@@ -1,0 +1,4 @@
+coav:
+    resource: "@CoavBundle/Resources/config/routing.yml"
+    prefix:   /
+
