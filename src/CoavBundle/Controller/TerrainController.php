@@ -22,7 +22,7 @@ class TerrainController extends Controller
 
         $terrains = $em->getRepository('CoavBundle:Terrain')->findAll();
 
-        return $this->render('terrain/index.html.twig', array(
+        return $this->render('@Coav/terrain/show.html.twig', array(
             'terrains' => $terrains,
         ));
     }
@@ -30,7 +30,8 @@ class TerrainController extends Controller
     /**
      * Creates a new terrain entity.
      *
-     */
+     * */
+
     public function newAction(Request $request)
     {
         $terrain = new Terrain();
@@ -45,11 +46,12 @@ class TerrainController extends Controller
             return $this->redirectToRoute('terrain_show', array('id' => $terrain->getId()));
         }
 
-        return $this->render('terrain/new.html.twig', array(
+        return $this->render('@Coav/terrain/new.html.twig', array(
             'terrain' => $terrain,
             'form' => $form->createView(),
         ));
     }
+
 
     /**
      * Finds and displays a terrain entity.
@@ -59,7 +61,7 @@ class TerrainController extends Controller
     {
         $deleteForm = $this->createDeleteForm($terrain);
 
-        return $this->render('terrain/show.html.twig', array(
+        return $this->render('@Coav/terrain/show.html.twig', array(
             'terrain' => $terrain,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -81,7 +83,7 @@ class TerrainController extends Controller
             return $this->redirectToRoute('terrain_edit', array('id' => $terrain->getId()));
         }
 
-        return $this->render('terrain/edit.html.twig', array(
+        return $this->render('@Coav/terrain/edit.html.twig', array(
             'terrain' => $terrain,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

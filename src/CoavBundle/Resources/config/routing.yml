@@ -15,5 +15,5 @@ coav_reservation:
     prefix:   /reservation
 
 coav_terrain:
-   resource: "@CoavBundle/Resources/config/routing/terrain.yml"
+    resource: "@CoavBundle/Resources/config/routing/terrain.yml"
     prefix:   /terrain

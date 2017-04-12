@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('CoavBundle:Default:index.html.twig');
+        return $this->render('@Coav/default/index.html.twig');
     }
 }
