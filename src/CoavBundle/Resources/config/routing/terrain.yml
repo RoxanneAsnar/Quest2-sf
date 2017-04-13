@@ -8,17 +8,7 @@ terrain_show:
     defaults: { _controller: "CoavBundle:Terrain:show" }
     methods:  GET
 
-terrain_new:
-    path:     /new
-    defaults: { _controller: "CoavBundle:Terrain:new" }
-    methods:  [GET, POST]
-
-terrain_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "CoavBundle:Terrain:edit" }
-    methods:  [GET, POST]
-
-terrain_delete:
-    path:     /{id}/delete
-    defaults: { _controller: "CoavBundle:Terrain:delete" }
-    methods:  DELETE
+terrain_add:
+    path:     /add
+    defaults: { _controller: "CoavBundle:Default:Add" }
+    methods:  GET

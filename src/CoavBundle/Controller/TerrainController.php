@@ -28,30 +28,16 @@ class TerrainController extends Controller
     }
 
     /**
-     * Creates a new terrain entity.
+     * Add elements to the terrain entity (database) to have something to show
      *
-     * */
+     */
 
-    public function newAction(Request $request)
+    public function AddAction(Terrain $terrain)
     {
-        $terrain = new Terrain();
-        $form = $this->createForm('CoavBundle\Form\TerrainType', $terrain);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($terrain);
-            $em->flush();
-
-            return $this->redirectToRoute('terrain_show', array('id' => $terrain->getId()));
-        }
-
-        return $this->render('@Coav/terrain/new.html.twig', array(
+        return $this->render('@Coav/terrain/show.html.twig', array(
             'terrain' => $terrain,
-            'form' => $form->createView(),
         ));
     }
-
 
     /**
      * Finds and displays a terrain entity.
@@ -59,68 +45,9 @@ class TerrainController extends Controller
      */
     public function showAction(Terrain $terrain)
     {
-        $deleteForm = $this->createDeleteForm($terrain);
-
         return $this->render('@Coav/terrain/show.html.twig', array(
             'terrain' => $terrain,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    /**
-     * Displays a form to edit an existing terrain entity.
-     *
-     */
-    public function editAction(Request $request, Terrain $terrain)
-    {
-        $deleteForm = $this->createDeleteForm($terrain);
-        $editForm = $this->createForm('CoavBundle\Form\TerrainType', $terrain);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('terrain_edit', array('id' => $terrain->getId()));
-        }
-
-        return $this->render('@Coav/terrain/edit.html.twig', array(
-            'terrain' => $terrain,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-     * Deletes a terrain entity.
-     *
-     */
-    public function deleteAction(Request $request, Terrain $terrain)
-    {
-        $form = $this->createDeleteForm($terrain);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($terrain);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('terrain_index');
-    }
-
-    /**
-     * Creates a form to delete a terrain entity.
-     *
-     * @param Terrain $terrain The terrain entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Terrain $terrain)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('terrain_delete', array('id' => $terrain->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
 }

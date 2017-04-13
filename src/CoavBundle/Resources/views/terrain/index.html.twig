@@ -19,7 +19,7 @@
         <tbody>
         {% for terrain in terrains %}
             <tr>
-                <td><a href="{{ path('terrain_show', { 'id': terrain.id }) }}">{{ terrain.id }}</a></td>
+                <td><a href="{{ path('terrain_show') }}"></a></td>
                 <td>{{ terrain.name }}</td>
                 <td>{{ terrain.icao }}</td>
                 <td>{{ terrain.latitude }}</td>
@@ -29,10 +29,7 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('terrain_show', { 'id': terrain.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('terrain_edit', { 'id': terrain.id }) }}">edit</a>
+                            <a href="{{ path('terrain_show') }}">show</a>
                         </li>
                     </ul>
                 </td>
@@ -41,9 +38,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('terrain_new') }}">Create a new terrain</a>
-        </li>
-    </ul>
 {% endblock %}
