@@ -9,17 +9,37 @@ CoavBundle\Entity\Flight:
             generator:
                 strategy: AUTO
     fields:
-        departure:
-            type: string
-            length: '4'
         arrival:
             type: string
             length: '4'
         pilot:
             type: string
             length: 255
+            nullable: true
         freeSeats:
             type: integer
+            nullable: true
         takeofTime:
             type: datetime
+            nullable: true
     lifecycleCallbacks: {  }
+
+    manyToOne:
+        departure:
+            targetEntity: CoavBundle\Entity\Terrain
+            inversedBy: departures
+
+    manyToOne:
+        arrival:
+            targetEntity: CoavBundle\Entity\Terrain
+            inversedBy: arrivals
+
+    oneToMany:
+        reservations:
+            targetEntity: CoavBundle\Entity\Reservation
+            mappedBy: reservation
+
+    manyToOne:
+        planeModel:
+            targetEntity: CoavBundle\Entity\PlaneModel
+            inversedBy: flights

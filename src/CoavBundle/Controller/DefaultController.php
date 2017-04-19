@@ -24,12 +24,22 @@ class DefaultController extends Controller
         $terrain1->setCity('lyon');
         $terrain1->setCountry('france');
 
+        $terrain2 = new Terrain();
+        $terrain2->setName('Charles de Gaulle');
+        $terrain2->setIcao('PU9F');
+        $terrain2->setLatitude(907809);
+        $terrain2->setLongitude(696060);
+        $terrain2->setCity('Paris');
+        $terrain2->setCountry('France');
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($terrain1);
+        $em->persist($terrain2);
         $em->flush();
 
         return $this->render('@Coav/terrain/show.html.twig', [
             'terrain' => $terrain1,
+            'terrain2' => $terrain2,
         ]);
     }
 }

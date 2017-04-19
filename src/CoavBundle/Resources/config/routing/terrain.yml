@@ -7,8 +7,3 @@ terrain_show:
     path:     /{id}/show
     defaults: { _controller: "CoavBundle:Terrain:show" }
     methods:  GET
-
-terrain_add:
-    path:     /add
-    defaults: { _controller: "CoavBundle:Default:Add" }
-    methods:  GET
